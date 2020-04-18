@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
   };
 
   // In case you don't wanna use an arrow function you have to use this bit of code to bind the
@@ -26,6 +26,14 @@ class Counter extends Component {
           className="btn btn-secondary btn-sm"
         >
           Increment
+        </button>
+        <button
+          onClick={() =>
+            this.props.onDelete(this.props.counter.id)
+          } /* arrow fn cecause parameter is send, otherwise fn reference is enough */
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
         </button>
       </div>
     );

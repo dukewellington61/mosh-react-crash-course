@@ -11,13 +11,26 @@ class Counters extends Component {
     ],
   };
 
+  // Deletes a counter regardles of the counters value
+  handleDelete = (counterId) => {
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
+
+    this.setState({
+      counters,
+    }); /* { counters: counters } --> if key and value have the same name we write name only one time */
+  };
+
   render() {
     console.log("props", this.props);
 
     return (
       <div>
         {this.state.counters.map((counter) => (
-          <Counter key={counter.id} value={counter.value} selected />
+          <Counter
+            key={counter.id}
+            onDelete={this.handleDelete}
+            counter={counter}
+          />
         ))}
       </div>
     );
